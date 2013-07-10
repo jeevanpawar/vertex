@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Vertex | Machines</title>
@@ -6,196 +5,64 @@
 <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
 <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
-<script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
-<script src="js/cufon-yui.js" type="text/javascript"></script>
+<link href="css/css.css" rel="stylesheet" />
+<style type="text/css" media="screen">@import url('css/stylemenu.css');</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			//We initially hide the all dropdown menus
+			$('#dropdown_nav li').find('.sub_nav').hide();
+
+			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
+			$('#dropdown_nav li').hover(function() {
+				//Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
+				$(this).find('.sub_nav').fadeIn(100);
+			}, function() {
+				//Do the same again, only fadeOut this time.
+				$(this).find('.sub_nav').fadeOut(50);
+			});
+		});
+	</script>
+
 <script src="js/cufon-replace.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_300.font.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_500.font.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_700.font.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_900.font.js" type="text/javascript"></script>
-<script src="js/FF-cash.js" type="text/javascript"></script>
-<script src="js/easyTooltip.js" type="text/javascript"></script>
-<script src="js/script.js" type="text/javascript"></script>
-
-<script type="text/javascript" src="jquery-1.3.2.js"></script>
-<script type="text/javascript" src="jquery.livequery.js"></script>
-
-<link href="css.css" rel="stylesheet" />
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
-	var Arrays=new Array();
-	
-	$('.add-to-cart-button').click(function(){
-		
-		var thisID 	  = $(this).parent().parent().attr('id').replace('detail-','');
-		
-		var itemname  = $(this).parent().find('.item_name').html();
-		var itemprice = $(this).parent().find('.price').html();
-		
-		if(include(Arrays,thisID))
-		{
-			var price 	 = $('#each-'+thisID).children(".shopp-price").find('em').html();
-			var quantity = $('#each-'+thisID).children(".shopp-quantity").html();
-			quantity = parseInt(quantity)+parseInt(1);
-			
-			var total = parseInt(itemprice)*parseInt(quantity);
-			
-			$('#each-'+thisID).children(".shopp-price").find('em').html(total);
-			$('#each-'+thisID).children(".shopp-quantity").html(quantity);
-			
-			var prev_charges = $('.cart-total span').html();
-			prev_charges = parseInt(prev_charges)-parseInt(price);
-			
-			prev_charges = parseInt(prev_charges)+parseInt(total);
-			$('.cart-total span').html(prev_charges);
-			
-			$('#total-hidden-charges').val(prev_charges);
-		}
-		else
-		{
-			Arrays.push(thisID);
-			
-			var prev_charges = $('.cart-total span').html();
-			prev_charges = parseInt(prev_charges)+parseInt(itemprice);
-			
-			$('.cart-total span').html(prev_charges);
-			$('#total-hidden-charges').val(prev_charges);
-			
-			var Height = $('#cart_wrapper').height();
-			$('#cart_wrapper').css({height:Height+parseInt(45)});
-			
-			$('#cart_wrapper .cart-info').append('<div class="shopp" id="each-'+thisID+'"><div class="label">'+itemname+'</div><div class="shopp-price"> $<em>'+itemprice+'</em></div><span class="shopp-quantity">1</span><img src="remove.png" class="remove" /><br class="all" /></div>');
-			
-		}
-		
-	});	
-	
-	$('.remove').livequery('click', function() {
-		
-		var deduct = $(this).parent().children(".shopp-price").find('em').html();
-		var prev_charges = $('.cart-total span').html();
-		
-		var thisID = $(this).parent().attr('id').replace('each-','');
-		
-		var pos = getpos(Arrays,thisID);
-		Arrays.splice(pos,1,"0")
-		
-		prev_charges = parseInt(prev_charges)-parseInt(deduct);
-		$('.cart-total span').html(prev_charges);
-		$('#total-hidden-charges').val(prev_charges);
-		$(this).parent().remove();
-		
-	});	
-	
-	$('#Submit').livequery('click', function() {
-		
-		var totalCharge = $('#total-hidden-charges').val();
-		
-		$('#cart_wrapper').html('Total Charges: $'+totalCharge);
-		
-		return false;
-		
-	});	
-	
-	// this is for 2nd row's li offset from top. It means how much offset you want to give them with animation
-	var single_li_offset 	= 200;
-	var current_opened_box  = -1;
-	
-	$('#wrap li').click(function() {
-	
-		var thisID = $(this).attr('id');
-		var $this  = $(this);
-		
-		var id = $('#wrap li').index($this);
-		
-		if(current_opened_box == id) // if user click a opened box li again you close the box and return back
-		{
-			$('#wrap .detail-view').slideUp('slow');
-			return false;
-		}
-		$('#cart_wrapper').slideUp('slow');
-		$('#wrap .detail-view').slideUp('slow');
-		
-		// save this id. so if user click a opened box li again you close the box.
-		current_opened_box = id;
-		
-		var targetOffset = 0;
-		
-		// below conditions assumes that there are four li in one row and total rows are 4. How ever if you want to increase the rows you have to increase else-if conditions and if you want to increase li in one row, then you have to increment all value below. (if(id<=3)), if(id<=7) etc
-		
-		if(id<=3)
-			targetOffset = 0;
-		else if(id<=7)
-			targetOffset = single_li_offset;
-		else if(id<=11)
-			targetOffset = single_li_offset*2;
-		else if(id<=15)
-			targetOffset = single_li_offset*3;
-		
-		$("html:not(:animated),body:not(:animated)").animate({scrollTop: targetOffset}, 800,function(){
-			
-			$('#wrap #detail-'+thisID).slideDown(500);
-			return false;
-		});
-		
-	});
-	
-	$('.close a').click(function() {
-		
-		$('#wrap .detail-view').slideUp('slow');
-		
-	});
-	
-	$('.closeCart').click(function() {
-		
-		$('#cart_wrapper').slideUp();
-		
-	});
-	
-	$('#show_cart').click(function() {
-		
-		$('#cart_wrapper').slideToggle('slow');
-		
-	});
-	
-});
-
-function include(arr, obj) {
-  for(var i=0; i<arr.length; i++) {
-    if (arr[i] == obj) return true;
-  }
-}
-
-function getpos(arr, obj) {
-  for(var i=0; i<arr.length; i++) {
-    if (arr[i] == obj) return i;
-  }
-}
-
-</script>
-<!--[if lt IE 9]>
-<script type="text/javascript" src="js/html5.js"></script>
-<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen">
-<![endif]-->
 </head>
 <body id="page4">
 <!--==============================header=================================-->
 <header>
+  <div class="head">
+<a href="index.html"></a>
+</div>
+  
   <div class="main">
-    <h1><a href="index.html">wise solutions</a></h1>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="aboutus.html">About Us</a></li>
-        <li><a href="product1.html">Products</a></li>
-        <li><a class="active" href="machines.html">Machines</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-      </ul>
-    </nav>
-    <div class="clear"></div>
+       <nav>
+       <ul id="dropdown_nav">
+		<li><a class="first" href="index.html">Home</a></li>
+        <li><a class="first" href="aboutus.html">About Us</a></li>
+		<li><a class="first selected" href="machine1.html">Products</a>
+        	<ul class="sub_nav">
+				<li><a href="machine1.html">Box Strapping Machines</a></li>
+				<li><a href="machine2.html">Carton Sealing Machine</a></li>
+				<li><a href="machine3.html">Pouch Sealing Machine</a></li>
+				<li><a href="machine4.html">Vaccume Sealing Machines</a></li>
+                <li><a href="machine5.html">Induction Sealing Machines</a></li>
+				<li><a href="machine6.html">Semi Automatic Labelling Machine</a></li>
+				<li><a href="machine7.html">Label Gumming Machine</a></li>
+				<li><a href="machine8.html">Portable Bag Closure Machine</a></li>
+                <li><a href="machine9.html">Trapping Rolls & Tools</a></li>
+			</ul>
+        </li>
+        <li><a href="product1.html">Demo</a>
+		</li>
+        <li><a class="first" href="contacts.html">Contact Us</a></li>
+		
+	</ul>
+      </nav>
+      <div class="clear"></div>
   </div>
   
 </header>
@@ -205,9 +72,9 @@ function getpos(arr, obj) {
     <div class="container_12">
       <div class="wrapper">
         <article class="grid_3">
-          <h3 class="p0">Catagories</h3>
-          <ul class="list-2">
-           <li><a href="machine1.html">Box Strapping Machines</a></li>
+          <h3 class="p0">Machines</h3>
+           <ul class="list-2">
+            <li><a href="machine1.html" class="selected">Box Strapping Machines</a></li>
             <li><a href="machine2.html">Carton Sealing Machine</a></li>
             <li><a href="machine3.html">Pouch Sealing Machine</a></li>
             <li><a href="machine4.html">Vaccume Sealing Machines</a></li>
@@ -218,255 +85,203 @@ function getpos(arr, obj) {
             <li><a href="machine9.html">Trapping Rolls & Tools</a></li>
             
           </ul>
+          <h3 class="p0">Products</h3>
+           <ul class="list-2">
+            <li><a href="p1.html">BOPP Packing Tapes</a></li>
+            <li><a href="p2.html">Printed Tapes</a></li>
+            <li><a href="p3.html">Paper Tapes</a></li>
+            <li><a href="p4.html">Masking Tapes</a></li>
+            <li><a href="p5.html">Double Sided Cloth Tapes</a></li>
+            <li><a href="p6.html">Jumbo Tapes for Tapping M/c</a></li>
+            <li><a href="p7.html">Foam Tapes</a></li>
+            <li><a href="p8.html">Aluminium Foil Tapes</a></li>
+            <li><a href="p9.html">Duct Tapes</a></li>
+            <li><a href="p10.html">Sticker Tapes</a></li>
+            <li><a href="p11.html">BOPP Tape Dispenser</a></li>
+            <li><a href="p12.html">Strap Rolls</a></li>
+            
+          </ul>
         </article>
         <article class="grid_9">
           <h3>Our Machines</h3>
-          <div id="wrap" align="center" class="product">
+          
+          <div class="">
+          <div class="headline">
+          Semi Auto Strapping
+          </div>
+          <div class="image"><img src="machine_img/semiautostrap.jpg" /></div>
+          
+          <div class="fea">
+          MODEL:VI1063
+          </div>
+          <br>
+          <div>
           <ul>
-			<div class="gallery">
-            <li id="1">
-            <div>Auto Strapping</div>
-			<img src="machine_img/autostraping.jpg" class="img_border" height="100" alt=""  />
-			<br clear="all" />
-			</li>
-			<li id="2">
-            <div>Semi Auto Strapping </div>
-			<img src="machine_img/semiautostrap.jpg" class="img_border" height="100" alt="" />
-			<br clear="all" />
-			</li>
-			<li id="3">
-            <div>Semi Auto Strapping (Economy Model)</div>
-			<img src="machine_img/semiautoeconomy.png" class="img_border"  height="100" alt="" />
-			<br clear="all" />
-			</li>
-			<li id="4">
-            <div>Semi Auto Strapping (Floor Model)</div>
-			<img src="machine_img/semiautofloormodel.jpg" class="img_border"  height="100" alt="" />
-			<br clear="all" />
-			</li>
-             <li id="5">
-            <div>Pallet Strapping </div>
-			<img src="machine_img/Pallet_strapping_machine.jpg" class="img_border" height="100" alt="" />			
-				<br clear="all" />
-			</li>
-            
-			<!-- Detail Boxes for above four li -->
-			
-			
-			<div class="detail-view" id="detail-1">
-			
-				<div class="close" align="right">
-					<a href="javascript:void(0)">x</a>
-					
-				</div>
-				
-				<img src="machine_img/autostraping.jpg" class="detail_images" width="340" height="310" alt="" />
-				
-				<div class="detail_info">
-					
-					<label class='item_name'>Auto Strapping </label>
-					<br clear="all" />
-					
-					<p> FEATURES :<br>
-. Aluminium Arch: All in one design.<br>
-. Easy to increase the width or the height, only add some parts to the original.<br>
-. The guide of the brush is a big help to strap the package at the proper position. Brilliant   performance.<br>
-. Makes operation easy: Time saved, labour saving.<br>
-. Tension Adjustments: Can be adjustable at will, Max tension is over 90Kgs, Suitable for various kinds of cartons to choose the tight or lose strap never fall off.<br>
-. Precision Structure: Main machine's component is made of aluminum alloy. Control system is
-  compatible.<br>
-. Easy loading or unloading: To load or unload the strapping roll is convenient due to the dispenser is placed outside.<br></p>
-<p><b>MODEL: VI-A-1053</b><br>
-Power Supply : 3 Phase, 220/380/440V, 50/60Hz<br>
-Strap Width : 9,12,15,19 mm<br>
-Tension Adjustment : Adjustable (Max.over 90 kg)<br>
-Speed : 2.4 sec. per cycle<br>
-Max. Package Size : W850 x H600 mm<br>
-Min. Package Size : 100(L) x 50(H) mm<br>
-Power Consumption : 850W<br>
-Dimension : 1440(L) x 640(W) x 1517(H) mm<br>
-Net Weight : 250Kgs<br>
-Gross Weight : 300Kgs<br>
-Shipping Size : 1480(L) x 700(W) x 1700(H) mm<br>
-</p>
-					
-					<br clear="all" />
-					
-				</div>
-				
-				
-			</div>
-			<div class="detail-view" id="detail-2">
-				
-				<div class="close" align="right">
-					<a href="javascript:void(0)">x</a>
-					
-				</div>
-				
-				<img src="machine_img/semiautostrap.jpg" class="detail_images" width="340" height="310" alt="" />
-				
-				<div class="detail_info">
-					
-					<label class='item_name'>Semi Auto Strapping </label>
-					<br clear="all" />
-					
-					<p>FEATURES :<br>
-. Heavy-duty model suitable for continuous application area like Airports, Tiles, Meat processing units,Newspaper unit's etc.<br>
-. Stable quality, durable material, and easy maintenance. Special design-Control PP strap cooling time.<br>
-. It can make the PP strap to fasten well in any time.<br>
-. "Electricity-saving" device, the motor automatically stops running after 60 seconds pause to reduce the regular mechanical wear and to prolong the machine's life.<br>
-. The advanced P.C.B microchip circuit board control system, less malfunction and easy maintenance.<br>
-. Durable electro-magnetic clutch transmission means lesser mechanical wear and noise pollution. New heater plate design improves warm-up-time, weiding speed and increase work efficiency.<br></p>
-<p><b>MODEL:VI1063</b><br>
-Power Supply : AC 220V (50/60Hz)<br>
-Driving Motor : 1/4 HP, 220V/200W<br>
-Dimension : 910(L) x 580(W) x 750(H) mm<br>
-Strap Width : 6-15 mm(adjustable)<br>
-Tension Strength : 15-50 kgs<br>
-Strapping Speed : 1.5 Sec/Strap<br>
-Min. Package Size : 60mm<br>
-Max. Package Size : Any Size<br>
-Net Weight : 100 Kgs<br>
-Gross Weight : 120 Kgs<br>
-Sealing Method : Heat Sealing<br>				
-</p>
-<br clear="all" />
-</div>
-</div>
-			<div class="detail-view" id="detail-3">
-				
-				<div class="close" align="right">
-					<a href="javascript:void(0)">x</a>
-					
-				</div>
-				
-				<img src="machine_img/semiautoeconomy.png" class="detail_images" width="340" height="310" alt="" />
-				
-				<div class="detail_info">
-					
-					<label class='item_name'>Semi Auto Strapping (Economy Model)</label>
-					<br clear="all" />
-					
-
-					<p>FEATURES :<br>
-. Economy model for general purpose.
-. One Touch Operation and Easy Operation : Turn the power on and you are ready to strap your
-  packages, motor stops automatically when not in use within preset 60 seconds to save energy and
-  prolong motor life.
-. Advanced P.C.B. Control System: New Easy-to-Replace printed circuit board (PCB), controls
-  feeding, tensioning, welding, sealing, cooling of strap weld as well as other functions of the
-  machine for trouble-free and low cost operations.
-. Quality Electromagnetic Clutch Transmission: Durable electro-magnetic clutch transmission
-  increases motor life, strapping speed and reduces overall machine noise.
-. Top Safety Concern: Safe 24DC electrical control eliminates possibilities of electrical shock.
-</p><p><b>MODEL:VI1073</b><br>
-Power Supply : AC 220V (50/60Hz)<br>
-Strap Width : 6-15 mm(adjustable)<br>
-Driving Motor : 1/4HP, 220V/200W<br>
-Strapping Speed : 1.5 Sec/strap<br>
-Max.Package Size : Any Size<br>
-Min. Package Size : 60 mm<br>
-Tension Strength (Max.) : 15-50 Kgs<br>
-Dimension : 895(L) x 565(W) x 730(H) mm<br>
-Net Weight : 100Kgs<br>
-Gross Weight : 120Kgs<br>
-Sealing Method : Heat Sealing<br>
-						
-					</p>
-					
-					<br clear="all" />
-					
-					
-					
-				</div>
-				
-			</div>
-			<div class="detail-view" id="detail-4">
-				
-				<div class="close" align="right">
-					<a href="javascript:void(0)">x</a>
-					
-				</div>
-				
-				<img src="machine_img/semiautofloormodel.jpg" class="detail_images" width="340" height="310" alt="" />
-				
-				<div class="detail_info">
-					
-					<label class='item_name'>Semi Auto Strapping (Floor Model)</label>
-					<br clear="all" />
-					
-					<p>FEATURES :
-Suitable for heavy bulky packages.
-Option of Ball Bearing Top
-One touch and easy operation : Turn the power on and you are ready to strap your packages. Motor
+          <li>Power Supply : AC 220V (50/60Hz)</li>
+		  <li>Driving Motor : 1/4 HP, 220V/200W</li>
+          <li>Dimension : 910(L) x 580(W) x 750(H) mm</li>
+		  <li>Strapping Speed : 1.5 Sec/strap</li>
+		  <li>Strap Width : 6-15 mm(adjustable)</li>
+		  <li>Tension Strength : 15-50 kgs</li>
+		  <li>Strapping Speed : 1.5 Sec/Strap</li>
+		  <li>Min. Package Size : 60mm</li>
+		  <li>Max. Package Size : Any Size</li>
+	      <li>Net Weight : 100 Kgs</li>
+	      <li>Gross Weight : 120 Kgs</li>
+          <li>Sealing Method : Heat Sealing</li>
+          </ul>
+          </div>
+         
+          
+          <div class="fea">
+          Features
+          </div>
+          <br>
+          <ul>
+          <li>Heavy-duty model suitable for continuous application area like Airports, Tiles, Meat processing units,Newspaper unit's etc.</li>
+          
+		  <li>Stable quality, durable material, and easy maintenance. Special design-Control PP strap cooling time.</li>
+  		  <li>It can make the PP strap to fasten well in any time.</li>
+		  <li>"Electricity-saving" device, the motor automatically stops running after 60 seconds pause to reduce the regular mechanical wear and to prolong the machine's life.</li>
+		  <li>The advanced P.C.B microchip circuit board control system, less malfunction and easy maintenance.</li>
+          <li>Durable electro-magnetic clutch transmission means lesser mechanical wear and noise pollution. New heater plate design improves warm-up-time, weiding speed and increase work efficiency.</li>
+          </ul>
+           </div>
+          
+          <div class="">
+          <div class="headline">
+          Semi Auto Strapping (Economy Model)
+          </div>
+          <div class="image"><img src="machine_img/semiautoeconomy.png"/></div>
+          <div class="fea">
+         MODEL:VI1073
+          </div>
+          <br>
+          <div>
+          <ul>
+          <li>Power Supply : AC 220V (50/60Hz)</li>
+		  <li>Strap Width : 6-15 mm(adjustable)</li>
+          <li>Driving Motor : 1/4HP, 220V/200W</li>
+		  <li>Strapping Speed : 1.5 Sec/strap</li>
+		  <li>Max.Package Size : Any Size</li>
+		  <li>Min. Package Size : 60 mm</li>
+		  <li>Tension Strength (Max.) : 15-50 Kgs</li>
+		  <li>Dimension : 895(L) x 565(W) x 730(H) mm</li>
+		  <li>Net Weight : 100Kgs</li>
+	      <li>Gross Weight : 120Kgs</li>
+	      <li>Sealing Method : Heat Sealing</li>
+          </ul>
+          </div>
+         
+          
+          <div class="fea">
+          FEATURES
+          </div>
+          <br>
+          <ul>
+          <li>Suitable for heavy bulky packages.</li>
+          
+		  <li>Option of Ball Bearing Top.</li>
+  		  <li>One touch and easy operation : Turn the power on and you are ready to strap your packages. Motor
 stops automatically when not in use within preset 60 seconds to save energy and prolong motor life.
 Advanced P.C.B control system: New easy-to-replace printed circuit board (P C B),controls feeding,
 tensioning, welding, sealing, cooling of strap welds as well as other functions of the machine for
-trouble-free and low-cost operations.
-Perfect welding heater plate: One-piece die-cast nickel steel heater plate completely eliminates heater
-blade problems associated with other older style heater elements.
-Quality electromagnetic clutch transmission: Durable electro-magnetic clutch transmission increase
-motor life, strapping speed and reduces overall machine noise.
-Top safety concern: Safe 24vdc electrical control eliminates possibilities of electrical shock.
-</p>
-<p><b>MODEL: VI 1083</b><br>
-Power Supply : AC 220V, (50/60Hz)<br>
-Driving Motor : 1/4Hp, 220v, 200W<br>
-Strap Width : 6-15 mm (adjustable)<br>
-Tension Strength : 15-50 Kgs<br>
-Max. Package Size : Any Size<br>
-Min. Package Size : 60 mm<br>
-Strapping Speed : 1.5 sec/strap<br>
-Dimension : 910(L) x 580(W) x 370(H) mm<br>
-Net Weight : 100Kgs<br>
-Gross Weight : 120Kgs<br>
-Sealing Method : Heat Sealing<br></p>					
-				</div>
-				</div>
-			</div>
-            
-           
-            <div class="detail-view" id="detail-5">
-			
-				<div class="close" align="right">
-					<a href="javascript:void(0)">x</a>
-					
-				</div>
-				
-				<img src="machine_img/Pallet_strapping_machine.jpg" class="detail_images" width="340" height="310" alt="" />
-				
-				<div class="detail_info">
-					
-					<label class='item_name'>Pallet Strapping </label>
-					<br clear="all" />
-					
-					<p> <b>FEATURES :</b><br>
-. Special model for Large and Heavy Pallets.<br>
-. Economy model for general purpose.<br>
-. One Touch Operation and Easy Operation: Turn the power on and you are ready to strap your     packages,motor stops automatically when not in use within preset 60 seconds to save energy and prolong motor life.<br>
-. Advanced P.C.B. Control System: New Easy-to-Replace printed circuit board (PCB), controls feeding,tensioning, welding, sealing, cooling of strap weld as well as other functions of the machine for troublefree and low cost operations.<br>
-. Quality Electromagnetic Clutch Transmission: Durable electro-magnetic clutch transmission increases motor life, strapping speed and reduces overall machine noise.</p>
-<p><b>MODEL: VI-P-1093</b><br>
-Power Supply : AC 220V(50/60Hz)<br>
-Power : 0.66 KW<br>
-Strap Width : 6-15 mm (adjustable)<br>
-Strapping Speed : 1.5 Sec/Strap<br>
-Max. Package Size : Any size<br>
-Min. Package Size : 60 mm<br>
-Tension Strength (Max.): 15-50 Kgs<br>
-Dimension : 945(L)x690(W)x1140(H) mm<br>
-Net Weight : 100Kgs<br>
-Gross Weight : 120Kgs<br>
-</p>
-					
-					<br clear="all" />
-					
-				</div>
-				
-				
-			</div>
-			</ul>
-			<!---->
+trouble-free and low-cost operations.</li>
+		  <li>Perfect welding heater plate: One-piece die-cast nickel steel heater plate completely eliminates heater
+blade problems associated with other older style heater elements.</li>
+		  <li>Quality electromagnetic clutch transmission: Durable electro-magnetic clutch transmission increase
+motor life, strapping speed and reduces overall machine noise.</li>
+          <li>Top safety concern: Safe 24vdc electrical control eliminates possibilities of electrical shock.</li>
+          </ul>
+          </div>
+          <br>
+          <div class="">
+          <div class="headline">
+          Semi Auto Strapping (Floor Model)
+          </div>
+        <div class="image"><img src="machine_img/semiautofloormodel.jpg"  />
+		</div>
+          <div class="fea">
+         MODEL: VI 1083
+          </div>
+          <br>
+          <div>
+          <ul>
+          <li>Power Supply : AC 220V, (50/60Hz)</li>
+		  <li>Driving Motor : 1/4Hp, 220v, 200W</li>
+          <li>Strap Width : 6-15 mm (adjustable)</li>
+		  <li>Tension Strength : 15-50 Kgs</li>
+		  <li>Max. Package Size : Any Size</li>
+		  <li>Min. Package Size : 60 mm</li>
+		  <li>Strapping Speed : 1.5 sec/strap</li>
+		  <li>Dimension : 910(L) x 580(W) x 370(H) mm</li>
+		  <li>Net Weight : 100Kgs</li>
+	      <li>Gross Weight : 120Kgs</li>
+	      <li>Sealing Method : Heat Sealing</li>
+          </ul>
+          </div>
+         
+          
+          <div class="fea">
+          FEATURES
+          </div>
+          <br>
+          <ul>
+          <li>Economy model for general purpose.</li>
+          
+		  <li>One Touch Operation and Easy Operation : Turn the power on and you are ready to strap your
+  packages, motor stops automatically when not in use within preset 60 seconds to save energy and
+  prolong motor life.</li>
+  		  <li>Advanced P.C.B. Control System: New Easy-to-Replace printed circuit board (PCB), controls
+  feeding, tensioning, welding, sealing, cooling of strap weld as well as other functions of the
+  machine for trouble-free and low cost operations.</li>
+		  <li>Quality Electromagnetic Clutch Transmission: Durable electro-magnetic clutch transmission
+  increases motor life, strapping speed and reduces overall machine noise.</li>
+		  <li>Top Safety Concern: Safe 24DC electrical control eliminates possibilities of electrical shock.</li>
+         
+          </ul>
+          </div>
+          <div class="">
+          <div class="headline">
+          Pallet Strapping
+          </div>
+          <div class="image"><img src="machine_img/Pallet_strapping_machine.jpg"/>
+		</div>
+          <div class="fea">
+         MODEL: VI-P-1093
+          </div>
+          <br>
+          <div>
+          <ul>
+          <li>Power Supply : AC 220V(50/60Hz)</li>
+		  <li>Power : 0.66 KW</li>
+          <li>Strap Width : 6-15 mm (adjustable)</li>
+		  <li>Strapping Speed : 1.5 Sec/Strap</li>
+		  <li>Max. Package Size : Any size</li>
+		  <li>Min. Package Size : 60 mm</li>
+		  <li>Tension Strength (Max.): 15-50 Kgs</li>
+		  <li>Dimension : 945(L)x690(W)x1140(H) mm</li>
+		  <li>Net Weight : 100Kgs</li>
+	      <li>Gross Weight : 120Kgs</li>
+	      </ul>
+          </div>
+         
+          
+          <div class="fea">
+          FEATURES
+          </div>
+          <br>
+          <ul>
+          <li>Special model for Large and Heavy Pallets.</li>
+          
+		  <li>Economy model for general purpose.</li>
+  		  <li>One Touch Operation and Easy Operation: Turn the power on and you are ready to strap your     packages,motor stops automatically when not in use within preset 60 seconds to save energy and prolong motor life.</li>
+		  <li>Advanced P.C.B. Control System: New Easy-to-Replace printed circuit board (PCB), controls feeding,tensioning, welding, sealing, cooling of strap weld as well as other functions of the machine for troublefree and low cost operations.</li>
+		  <li>Quality Electromagnetic Clutch Transmission: Durable electro-magnetic clutch transmission increases motor life, strapping speed and reduces overall machine noise.</li>
+         
+          </ul>
+          
+          </div>
         </article>
       </div>
     </div>
@@ -475,37 +290,40 @@ Gross Weight : 120Kgs<br>
 <!--==============================footer=================================-->
 <footer>
   <div class="main">
+  
+  
+  <div class="foot">
     <div class="container_12">
       <div class="wrapper">
-        <article class="grid_3">
-          <ul class="list-services">
-           <li class="item-1"><a class="tooltips" href="https://www.facebook.com"></a></li>
-            <li class="item-2"><a class="tooltips" href="https://twitter.com/"></a></li>
-            <!-- li class="item-3"><a class="tooltips" href="#"></a></li>
-            <li class="item-4"><a class="tooltips" href="#"></a></li -->
-          </ul>
-        </article>
+       <br> 
         <article class="grid_3">
           <div class="indent-left2">
             <h5>Navigation</h5>
             <ul class="list-1">
               <li><a href="index.html">Home</a></li>
               <li><a href="aboutus.html">About Us</a></li>
-              <li><a href="product1.html">Products</a></li>
-              <li><a href="machines.html">Machines</a></li>
+              <li><a href="machine1.html">Products</a></li>
+              <li><a href="product1.html">Demo</a></li>
               <li><a href="contacts.html">Contacts</a></li>
             </ul>
           </div>
         </article>
+        
         <article class="grid_3">
-          <h5>Contact</h5>
-          <dl class="contact">
-            <dt>No.7,'D' Block,<br>
+          <h5>Adress</h5>
+              No.7,'D' Block,<br>
               Pooja Residency,<br>Anand Nagar,Upnagar<br>
-              Nashik 422 006.</dt>
-            <dd><span>Phone&nbsp;:</span> +91 253 241 7537</dd>
-            <dd><span>&nbsp;&nbsp;&nbsp;&nbsp;Fax&nbsp;:</span> +91 253 241 0150</dd>
-          </dl>
+              Nashik 422 006.<br>
+              Maharashtra, India.
+                    
+        </article>
+        <article class="grid_3">
+          <h5>Contact Us</h5>
+              <span>Phone&nbsp;: +91 253 241 7537</span><br>
+              <span>Mobile&nbsp;: +91 937 192 1747</span><br>
+              <span>Email&nbsp;: vertexpack@gmail.com</span><br>
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;Fax&nbsp;: +91 253 241 0150</span>
+                                  
         </article>
         <article class="grid_3">
           <h5>Legal</h5>
@@ -513,8 +331,20 @@ Gross Weight : 120Kgs<br>
           <p class="prev-indent-bot3">All Rights Reserved</p>
           <p class="color-1 p0">Design by <a target="_blank" href="http://www.wavetechline.com/" class="link">wavetechline.com</a></p>
         </article>
+         
       </div>
     </div>
+  </div>
+  <div class="foot1">
+  <table class="tab_foot">
+  <tr>
+  <td>Copyright @ Vertex 2013</td>
+  </tr>
+  <tr>
+  <td>Powered By:<a href="http://www.wavetechline.com" target="_tab">Wave TechLine India Pvt. Ltd.</a></td>
+  </tr>
+  </table>
+  </div>
   </div>
 </footer>
 <script type="text/javascript">Cufon.now();</script>

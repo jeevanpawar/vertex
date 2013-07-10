@@ -1,9 +1,14 @@
-#container { width:980px; margin:0px auto 0px; background:#FFFFFF; padding:10px; font-size:12px; margin-top:0px;
-border-top:1px solid #CCC;
-border-bottom:1px solid #CCC;
+#container { width:980px; margin:0px auto 0px; background:#FFFFFF; padding:10px; font-size:12px; margin-top:5px;
+border:3px solid #f3f3f3;
+
+border-radius:5px;
 }
 
 a{
 	text-transform:none;
 	color:#333
+}
+.di
+{
+	background-color:#360;
 }
