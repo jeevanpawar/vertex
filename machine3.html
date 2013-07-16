@@ -29,7 +29,15 @@
 			});
 		});
 	</script>
-
+<link rel="stylesheet" href="css/accordion.core.css" type="text/css" charset="utf-8">
+<style type="text/css">
+.left
+{
+	background-color:#f3f3f3;
+	text-align:center;
+	margin-left:-30px;
+}
+</style>
 <link href="css.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
@@ -108,37 +116,56 @@ $('.m3').fadeIn(200);
     <div class="container_12">
       <div class="wrapper">
         <article class="grid_3">
-          <h3 class="p0">Machines</h3>
-          <ul class="list-2">
-            <li><a href="machine1.html">Box Strapping Machines</a></li>
-            <li><a href="machine2.html">Carton Sealing Machine</a></li>
-            <li><a href="machine3.html" class="selected">Pouch Sealing Machine</a></li>
-            <li><a href="machine4.html">Vaccume Sealing Machines</a></li>
-            <li><a href="machine5.html">Induction Sealing Machines</a></li>
-            <li><a href="machine6.html">Semi Automatic Labelling Machine</a></li>
-            <li><a href="machine7.html">Label Gumming Machine</a></li>
-            <li><a href="machine8.html">Portable Bag Closure Machine</a></li>
-            <li><a href="machine9.html">Trapping Rolls & Tools</a></li>
-          </ul>
-          <h3 class="p0">Products</h3>
-           <ul class="list-2">
-            <li><a href="p1.html">BOPP Packing Tapes</a></li>
-            <li><a href="p2.html">Printed Tapes</a></li>
-            <li><a href="p3.html">Paper Tapes</a></li>
-            <li><a href="p4.html">Masking Tapes</a></li>
-            <li><a href="p5.html">Double Sided Cloth Tapes</a></li>
-            <li><a href="p6.html">Jumbo Tapes for Tapping M/c</a></li>
-            <li><a href="p7.html">Foam Tapes</a></li>
-            <li><a href="p8.html">Aluminium Foil Tapes</a></li>
-            <li><a href="p9.html">Duct Tapes</a></li>
-            <li><a href="p10.html">Sticker Tapes</a></li>
-            <li><a href="p11.html">BOPP Tape Dispenser</a></li>
-            <li><a href="p12.html">Strap Rolls</a></li>
-            
-          </ul>
+          <ul id="example1" class="accordion">
+                <li>
+                     <a href="machine1.html"><h5 class="left">BOX STRAPPING MACHINE</h5></a> 
+                    
+                </li>
+                <li>
+                    <a href="machine2.html"><h5 class="left">CARTON SEALING MACHINE</h5></a>
+                    
+                </li>
+                <li>
+                    <a href="machine3.html"><h5 class="left">POUCH SEALING MACHINE</h5></a>
+                    <ul>
+                      <li><a href="#list1">CONTINUOUS SEALING MACHINE</a></li>
+                        <li><a href="#list2">FOOT SEALER MACHINE</a></li> 
+                        <li><a href="#list3">HAND SEALERS</a></li>  
+                    </ul>
+                    
+                </li>
+               
+                <li>
+                    <a href="machine4.html"><h5 class="left">VACUUM SEALING MACHINE</h5></a>
+                    
+                </li>
+                 <li>
+                    <a href="machine6.html"><h5 class="left">SEMI AUTOMATIC LABELLING MACHINE</h5></a>
+                </li>
+                <li>
+                    <a href="machine7.html"><h5 class="left">LABEL GUMMING MACHINE</h5></a>
+                    
+                </li>
+                <li>
+                    <a href="machine8.html"><h5 class="left">BAG CLOSING SYSTEM</h5></a>
+                   
+                </li>
+                 <li>
+                    <a href="machine9.html"> <h5 class="left">STRAPPING ROLLS & TOOLS</h5></a>
+                    
+                </li>
+                <li>
+                     <a href="p1.html"><h5 class="left">BOPP TAPE DISPENSER</h5></a>
+                    	
+               		</li>
+               		<li>
+                    <a href="p13.html"> <h5 class="left">INDUSTRIAL SELF ADHESIVE TAPES</h5></a>
+                    
+                    </li>
+            </ul>
         </article>
         <article class="grid_9">
-          <h3>Our Machines</h3>
+          <h3>POUCH SEALING MACHINE</h3>
                   
           <div class="">
           <div class="headline">
@@ -147,28 +174,57 @@ $('.m3').fadeIn(200);
           
           <div class="image"><img src="machine_img/Continuous-Sealing-Machi.jpg" /></div>
           <div class="one">
-          <p><b> </b><br>
-          If you have large number of Pouches, bags, small packets, which need to be sealed speedily - then this is the machine you are looking for.Just keep feeding the filled pouches from one side of the machine. The Roller Bands will heat seal your pouch, move them forward & release them at the other end.
-No operator handling is required - thus making the sealing process very easy & fast.
-It is used to fill Tea/ Coffee bags, snacks, powders, pharmaceuticals, chemicals, seeds, spices - any type of bags / pouches in large volume & need to be sealed fast.
+          <br>
+          <ul>
+          <li class="one">If you have large number of Pouches, bags, small packets, which need to be sealed speedily - then this is the machine you are looking for.
+          </li>
+          <li class="one">
+          Just keep feeding the filled pouches from one side of the machine. The Roller Bands will heat seal your pouch, move them forward & release them at the other end.
+          </li>
+          <li class="one">
+			No operator handling is required - thus making the sealing process very easy & fast.
+		  </li>
+          <li class="one">
+			It is used to fill Tea/ Coffee bags, snacks, powders, pharmaceuticals, chemicals, seeds, spices - any type of bags / pouches in large volume & need to be sealed fast.
+          </li>
           </div>
           <div class="fea">
          MODEL: VI-PS-13053
           </div>
           <br>
           <div>
-          <ul>
-          <li>Temp Range : 0-300 C </li>
-		  <li>Voltage : AC 220V, 50Hz / 500 W</li>
-          <li>Sealing Speed : 0-12 MT/MIN </li>
-		  <li>Sealing Width : 8, 10MM</li>
-		  <li>Single Conveyor Loading : 1Kg</li>
-		  <li>Over All Conveyor Loading : 3Kg</li>
-		  <li>Sealing Height From Conveyor : 150-270 MM</li>
-		  <li>Printing(optional): Dry Ink<!-- --></li>
-		  <li>Dimention(LxWxH) : 800x380x550</li>
-	      <li>Weight : 35 Kg</li>
-	      </ul>
+          <table class="model">
+          <tr>
+          <td>Temp Range </td><td> 0-300 C </td>
+          </tr>
+          <tr>
+		  <td>Voltage </td><td> AC 220V, 50Hz / 500 W</td>
+          </tr>
+          <tr>
+          <td>Sealing Speed </td><td> 0-12 MT/MIN </td>
+          </tr>
+          <tr>
+		  <td>Sealing Width </td><td> 8, 10MM</td>
+          </tr>
+          <tr>
+		  <td>Single Conveyor Loading </td><td> 1Kg</td>
+          </tr>
+		  <tr>
+          <td>Over All Conveyor Loading </td><td> 3Kg</td>
+          </tr>
+          <tr>
+		  <td>Sealing Height From Conveyor </td><td> 150-270 MM</td>
+          </tr>
+          <tr>
+		  <td>Printing(optional)</td><td> Dry Ink<!-- --></td>
+          </tr>
+          <tr>
+		  <td>Dimention(LxWxH) </td><td> 800x380x550</td>
+          </tr>
+          <tr>
+	      <td>Weight </td><td> 35 Kg</td></tr>
+          
+	      </table>
           </div>
          
           
@@ -176,26 +232,63 @@ It is used to fill Tea/ Coffee bags, snacks, powders, pharmaceuticals, chemicals
           Specification v74
           </div>
           
-          <p><b> </b><br>
-Size of Packing Bag :100-500 mm Height x Width
-                      (Any Size) Upto 1000 Gauge Thickness<br>
-Sealing Width : 3mm or 6mm<br>
-Sealing Speed :  7 metres per minute<br>
-Power Used : 220 / 240 V, Single Phase, 50/60 Hz<br>
-Heater : Tubular Cartridge Heater of 500 W<br>
-Temperature Range: 0C - 300C<br>
-Conveyor Belt Width : 200 mm<br>
-Conveyor Height : Adjustable upto 500 mm<br>
-Conveyor Load Capacity : 20 Kgs.<br>
-Dimensions : 1500L x 600W x 1300H (mm)<br>
-Net Weight : 130 Kgs.<br>
-Packing Weight : 230 Kgs.<br>
-</p>
+          <br>
+          <table class="model2">
+          <tr>
+          <td>Size of Packing Bag </td>
+          <td>100-500 mm Height x Width (Any Size) Upto 1000 Gauge Thickness</td>
+          </tr>
+          <tr>
+          <td>Sealing Width </td>
+          <td> 3mm or 6mm</td>
+          </tr>
+          <tr>
+          <td>Sealing Speed </td>
+          <td>  7 metres per minute</td>
+          </tr>
+          <tr>
+          <td>Power Used </td>
+          <td> 220 / 240 V, Single Phase, 50/60 Hz</td>
+          </tr>
+          <tr>
+          <td>Heater </td>
+          <td> Tubular Cartridge Heater of 500 W</td>
+          </tr>
+          <tr>
+          <td>Temperature Range</td>
+          <td> 0C - 300C</td>
+          </tr>
+          <tr>
+          <td>Conveyor Belt Width </td>
+          <td> 200 mm</td>
+          </tr>
+          <tr>
+          <td>Conveyor Height </td>
+          <td> Adjustable upto 500 mm</td>
+          </tr>
+          <tr>
+          <td>Conveyor Load Capacity </td>
+          <td> 20 Kgs.</td>
+          </tr>
+          <tr>
+          <td>Dimensions </td>
+          <td> 1500L x 600W x 1300H (mm)</td>
+          </tr>
+          <tr>
+          <td>Net Weight </td>
+          <td> 130 Kgs.</td>
+          </tr>
+          <tr>
+          <td>Packing Weight </td>
+          <td> 230 Kgs.</td>
+          </tr>
+          </table>
+
            </div>
           
           <div class="">
           <div class="headline">
-          Foot Sealer
+          <a href="#" name="list2">Foot Sealer</a>
           </div>
           <div class="image"><img src="machine_img/Foot-Sealer-machine.jpg"/></div>
           <div class="fea">
@@ -203,8 +296,8 @@ Packing Weight : 230 Kgs.<br>
           </div>
           <br>
           <div>
-          <table>
-            <tr>
+          <table class="model1">
+            <tr class="n">
             <td width="200">MODEL:</td>
             <td width="200">VIPS-350</td>
             <td width="200">VIPS-450</td>
@@ -255,7 +348,7 @@ sealing all kinds of polyethylene and polypropylene film recombined materials an
           </div>
           <div class="">
           <div class="headline">
-         Hand Sealers
+         <a href="#" name="list3">Hand Sealers</a>
           </div>
         <div class="image"><img src="machine_img/hand_sealer_machine.jpg"  />
 		</div>
@@ -378,7 +471,8 @@ in the industries of food native products, sweets, tea, medicine, hardware etc.<
         </article>
         
         <article class="grid_3">
-          <h5>Adress</h5>
+          <h5>Address</h5>
+            Regd. Office<br>
               No.7,'D' Block,<br>
               Pooja Residency,<br>Anand Nagar,Upnagar<br>
               Nashik 422 006.<br>
@@ -416,5 +510,19 @@ in the industries of food native products, sweets, tea, medicine, hardware etc.<
   </div>
 </footer>
 <script type="text/javascript">Cufon.now();</script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.accordion.2.0.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $('#example1, #example3').accordion();
+            $('#example2').accordion({
+                canToggle: true
+            });
+            $('#example4').accordion({
+                canToggle: true,
+                canOpenMultiple: true
+            });
+            $(".loading").removeClass("loading");
+        </script>
+
 </body>
 </html>

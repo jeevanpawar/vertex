@@ -374,9 +374,8 @@ h1 {
 	background: 217px 0 repeat-y;
 }
 h3 {
-	font-size:36px;
+	font-size:10px;
 	line-height:2em;
-	color:#4d4d4d;
 	margin-bottom:10px;
 	letter-spacing:-1px;
 }
@@ -544,6 +543,12 @@ h6 {
 	width:700px;
 	border:5px solid #f3f3f3;
 }
+.new tr td
+{
+	border:1px solid #CCC;
+	padding:5px;
+}
+
 .n
 {
 	background-color:#f3f3f3;
@@ -1089,21 +1094,24 @@ footer {
 {
 	font-size:20px; 
 	width:250px;
-	text-align:center;
 	margin-top:15px;
 	padding:5px;
-	
+	text-transform:uppercase;
 	background-color:#f3f3f3;
 }
 .headline
 {
 	font-size:20px; 
 	width:730px;
-	text-align:center;
 	margin-top:15px;
 	padding:5px;
-	
 	background-color:#f3f3f3;
+	text-transform:uppercase;
+}
+.headline a
+{
+	text-decoration:none;
+	color:#000;
 }
 .sp
 {
@@ -1111,9 +1119,48 @@ footer {
 	color:#333;
 	font-size:16px;
 }
+.model
+{
+	width:400px;
+}
+.model tr td
+{
+	border:1px solid #CCC;
+	padding:5px;
+}
+
+.model1
+{
+	width:480px;
+}
+.model1 tr td
+{
+	border:1px solid #CCC;
+	padding:5px;
+}
+.model2
+{
+	width:680px;
+}
+.model2 tr td
+{
+	border:1px solid #CCC;
+	padding:5px;
+}
 .one
 {
 	width:450px;
-	text-align:justify;
+	margin-top:1px;
 	
+}
+.slidingDiv {
+    height:300px;
+    background-color: #99CCFF;
+    padding:20px;
+    margin-top:10px;
+    border-bottom:5px solid #3399FF;
+}
+ 
+.show_hide {
+    display:none;
 }

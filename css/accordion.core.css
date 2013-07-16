@@ -1,0 +1,43 @@
+ul.accordion,
+ol.accordion {
+    margin: 0;
+    padding: 0;
+}
+h5
+{
+	padding:5px;
+	color:#666;
+	font-size:14px;
+}
+.accordion li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.accordion li:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    *zoom: 1;
+}
+.accordion li li {
+	width:205px;
+	border:1px solid #f3f3f3;
+	background-color:#E9E9E9;
+	padding:2px;
+	margin-bottom:5px;
+	text-align:center;
+	margin-top:0px;
+}
+.accordion li li:hover {
+	background-color:#f3f3f3;
+}
+.accordion a {
+    color: inherit;
+    text-decoration: inherit;
+}
+.accordion .loading {
+    display: none;
+}

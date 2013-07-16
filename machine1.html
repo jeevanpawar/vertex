@@ -11,18 +11,19 @@
 
 	<script type="text/javascript">
 		$(function() {
-			//We initially hide the all dropdown menus
-			$('#dropdown_nav li').find('.sub_nav').hide();
+ //We initially hide the all dropdown menus
+ $('#dropdown_nav li').find('.sub_nav').hide();
+ 
+ //When hovering over the main nav link we find the dropdown menu to the corresponding link.
+ $('#dropdown_nav li').hover(function() {
+  //Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
+  $(this).find('.sub_nav').fadeIn(100);
+ }, function() {
+  //Do the same again, only fadeOut this time.
+  $(this).find('.sub_nav').fadeOut(50);
+ });
+});
 
-			//When hovering over the main nav link we find the dropdown menu to the corresponding link.
-			$('#dropdown_nav li').hover(function() {
-				//Find a child of 'this' with a class of .sub_nav and make the beauty fadeIn.
-				$(this).find('.sub_nav').fadeIn(100);
-			}, function() {
-				//Do the same again, only fadeOut this time.
-				$(this).find('.sub_nav').fadeOut(50);
-			});
-		});
 	</script>
 
 <script src="js/cufon-replace.js" type="text/javascript"></script>
@@ -30,6 +31,16 @@
 <script src="js/Kozuka_Gothic_Pro_OpenType_500.font.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_700.font.js" type="text/javascript"></script>
 <script src="js/Kozuka_Gothic_Pro_OpenType_900.font.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/accordion.core.css" type="text/css" charset="utf-8">
+<style type="text/css">
+.left
+{
+	background-color:#f3f3f3;
+	text-align:center;
+	margin-left:-30px;
+}
+</style>
+
 </head>
 <body id="page4">
 <!--==============================header=================================-->
@@ -45,15 +56,16 @@
         <li><a class="first" href="aboutus.html">About Us</a></li>
 		<li><a class="first selected" href="machine1.html">Products</a>
         	<ul class="sub_nav">
-				<li><a href="machine1.html">Box Strapping Machines</a></li>
-				<li><a href="machine2.html">Carton Sealing Machine</a></li>
+				<li><a href="machine1.html">Box Strapping Machines</a>
+               </li>
+             	<li><a href="machine2.html">Carton Sealing Machine</a></li>
 				<li><a href="machine3.html">Pouch Sealing Machine</a></li>
 				<li><a href="machine4.html">Vaccume Sealing Machines</a></li>
                 <li><a href="machine5.html">Induction Sealing Machines</a></li>
 				<li><a href="machine6.html">Semi Automatic Labelling Machine</a></li>
 				<li><a href="machine7.html">Label Gumming Machine</a></li>
 				<li><a href="machine8.html">Portable Bag Closure Machine</a></li>
-                <li><a href="machine9.html">Trapping Rolls & Tools</a></li>
+                <li><a href="machine9.html">Strapping Rolls & Tools</a></li>
 			</ul>
         </li>
         <li><a href="product1.html">Demo</a>
@@ -72,42 +84,64 @@
     <div class="container_12">
       <div class="wrapper">
         <article class="grid_3">
-          <h3 class="p0">Machines</h3>
-           <ul class="list-2">
-            <li><a href="machine1.html" class="selected">Box Strapping Machines</a></li>
-            <li><a href="machine2.html">Carton Sealing Machine</a></li>
-            <li><a href="machine3.html">Pouch Sealing Machine</a></li>
-            <li><a href="machine4.html">Vaccume Sealing Machines</a></li>
-            <li><a href="machine5.html">Induction Sealing Machines</a></li>
-            <li><a href="machine6.html">Semi Automatic Labelling Machine</a></li>
-            <li><a href="machine7.html">Label Gumming Machine</a></li>
-            <li><a href="machine8.html">Portable Bag Closure Machine</a></li>
-            <li><a href="machine9.html">Trapping Rolls & Tools</a></li>
-            
-          </ul>
-          <h3 class="p0">Products</h3>
-           <ul class="list-2">
-            <li><a href="p1.html">BOPP Packing Tapes</a></li>
-            <li><a href="p2.html">Printed Tapes</a></li>
-            <li><a href="p3.html">Paper Tapes</a></li>
-            <li><a href="p4.html">Masking Tapes</a></li>
-            <li><a href="p5.html">Double Sided Cloth Tapes</a></li>
-            <li><a href="p6.html">Jumbo Tapes for Tapping M/c</a></li>
-            <li><a href="p7.html">Foam Tapes</a></li>
-            <li><a href="p8.html">Aluminium Foil Tapes</a></li>
-            <li><a href="p9.html">Duct Tapes</a></li>
-            <li><a href="p10.html">Sticker Tapes</a></li>
-            <li><a href="p11.html">BOPP Tape Dispenser</a></li>
-            <li><a href="p12.html">Strap Rolls</a></li>
-            
-          </ul>
+          <ul id="example1" class="accordion">
+                <li>
+                     <a href="machine1.html"><h5 class="left">BOX STRAPPING MACHINE</h5></a> 
+                    <div class="panel loading">
+                        <ul class="panel loading list">
+                        <li><a href="#codeword">AUTO STRAPPING MACHINE</a></li>
+                        <li><a href="#codeword2">SEMI AUTO STRAPPING MACHINE</a></li>
+                        <li><a href="#codeword3">SEMI AUTO STRAPPING MACHINE(ECONOMY MODEL)</a></li>
+                        <li><a href="#codeword4">SEMI AUTO STRAPPING MACHINE(FLOOR MODEL)</a></li>
+                        <li><a href="#codeword5">PALLET STRAPPING MACHINE</a></li>
+                       
+                    </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="machine2.html"><h5 class="left">CARTON SEALING MACHINE</h5></a>
+                    
+                </li>
+                <li>
+                    <a href="machine3.html"><h5 class="left">POUCH SEALING MACHINE</h5></a>
+                    
+                </li>
+               
+                <li>
+                    <a href="machine4.html"><h5 class="left">VACUUM SEALING MACHINE</h5></a>
+                    
+                </li>
+                 <li>
+                    <a href="machine6.html"><h5 class="left">SEMI AUTOMATIC LABELLING MACHINE</h5></a>
+                </li>
+                <li>
+                    <a href="machine7.html"><h5 class="left">LABEL GUMMING MACHINE</h5></a>
+                    
+                </li>
+                <li>
+                    <a href="machine8.html"><h5 class="left">BAG CLOSING SYSTEM</h5></a>
+                   
+                </li>
+                 <li>
+                    <a href="machine9.html"> <h5 class="left">STRAPPING ROLLS & TOOLS</h5></a>
+                    
+                </li>
+                <li>
+                     <a href="p1.html"><h5 class="left">BOPP TAPE DISPENSER</h5></a>
+                    	
+               		</li>
+               		<li>
+                    <a href="p13.html"> <h5 class="left">INDUSTRIAL SELF ADHESIVE TAPES</h5></a>
+                    
+                    </li>
+            </ul>
         </article>
         <article class="grid_9">
-          <h3>Our Machines</h3>
+          <h3>BOX STRAPPING MACHINE</h3>
           
           <div class="">
           <div class="headline">
-          Semi Auto Strapping
+          <a href="" name="codeword2">Semi Auto Strapping</a>
           </div>
           <div class="image"><img src="machine_img/semiautostrap.jpg" /></div>
           
@@ -116,24 +150,57 @@
           </div>
           <br>
           <div>
-          <ul>
-          <li>Power Supply : AC 220V (50/60Hz)</li>
-		  <li>Driving Motor : 1/4 HP, 220V/200W</li>
-          <li>Dimension : 910(L) x 580(W) x 750(H) mm</li>
-		  <li>Strapping Speed : 1.5 Sec/strap</li>
-		  <li>Strap Width : 6-15 mm(adjustable)</li>
-		  <li>Tension Strength : 15-50 kgs</li>
-		  <li>Strapping Speed : 1.5 Sec/Strap</li>
-		  <li>Min. Package Size : 60mm</li>
-		  <li>Max. Package Size : Any Size</li>
-	      <li>Net Weight : 100 Kgs</li>
-	      <li>Gross Weight : 120 Kgs</li>
-          <li>Sealing Method : Heat Sealing</li>
-          </ul>
-          </div>
-         
+          <table class="model">
+          <tr>
+          <td>Power Supply </td><td> AC 220V (50/60Hz)</td>
+		  </tr>
           
-          <div class="fea">
+          <tr>
+          <td>Driving Motor </td><td> 1/4 HP, 220V/200W</td>
+          </tr>
+          
+          <tr>
+          <td>Dimension </td><td> 910(L) x 580(W) x 750(H) mm</td>
+		  </tr>
+          
+          <tr>
+          <td>Strapping Speed </td><td> 1.5 Sec/strap</td>
+		  </tr>
+          
+          <tr>
+          <td>Strap Width </td><td> 6-15 mm(adjustable)</td>
+		  </tr>
+          
+          <tr>
+          <td>Tension Strength </td><td> 15-50 kgs</td>
+		  </tr>
+          
+          <tr>
+          <td>Strapping Speed </td><td> 1.5 Sec/Strap</td>
+		  </tr>
+          
+          <tr>
+          <td>Min. Package Size </td><td> 60mm</td>
+		  </tr>
+          
+          <tr>
+          <td>Max. Package Size </td><td> Any Size</td>
+	      </tr>
+          
+          <tr>
+          <td>Net Weight </td><td> 100 Kgs</td>
+	      </tr>
+          
+          <tr>
+          <td>Gross Weight </td><td> 120 Kgs</td>
+          </tr>
+          
+          <tr>
+          <td>Sealing Method </td><td> Heat Sealing</td>
+          </tr>
+          </table>
+          
+                    <div class="fea">
           Features
           </div>
           <br>
@@ -146,34 +213,59 @@
 		  <li>The advanced P.C.B microchip circuit board control system, less malfunction and easy maintenance.</li>
           <li>Durable electro-magnetic clutch transmission means lesser mechanical wear and noise pollution. New heater plate design improves warm-up-time, weiding speed and increase work efficiency.</li>
           </ul>
+
+          </div>
+         
+          
+          
            </div>
           
           <div class="">
           <div class="headline">
-          Semi Auto Strapping (Economy Model)
+          <a href="" name="codeword3">Semi Auto Strapping (Economy Model)</a>
           </div>
           <div class="image"><img src="machine_img/semiautoeconomy.png"/></div>
+          
           <div class="fea">
          MODEL:VI1073
           </div>
           <br>
           <div>
-          <ul>
-          <li>Power Supply : AC 220V (50/60Hz)</li>
-		  <li>Strap Width : 6-15 mm(adjustable)</li>
-          <li>Driving Motor : 1/4HP, 220V/200W</li>
-		  <li>Strapping Speed : 1.5 Sec/strap</li>
-		  <li>Max.Package Size : Any Size</li>
-		  <li>Min. Package Size : 60 mm</li>
-		  <li>Tension Strength (Max.) : 15-50 Kgs</li>
-		  <li>Dimension : 895(L) x 565(W) x 730(H) mm</li>
-		  <li>Net Weight : 100Kgs</li>
-	      <li>Gross Weight : 120Kgs</li>
-	      <li>Sealing Method : Heat Sealing</li>
-          </ul>
-          </div>
-         
-          
+          <table class="model">
+          <tr>
+          <td>Power Supply </td><td> AC 220V (50/60Hz)</td>
+		  </tr>
+          <tr>
+          <td>Strap Width </td><td> 6-15 mm(adjustable)</td>
+          </tr>
+          <tr>
+          <td>Driving Motor </td><td> 1/4HP, 220V/200W</td>
+		  </tr>
+          <tr>	
+          <td>Strapping Speed </td><td> 1.5 Sec/strap</td>
+		  </tr>
+          <tr>
+          <td>Max.Package Size </td><td> Any Size</td>
+		  </tr>
+          <tr>
+          <td>Min. Package Size </td><td> 60 mm</td>
+		  </tr>
+          <tr>
+          <td>Tension Strength (Max.) </td><td> 15-50 Kgs</td>
+		  </tr>
+          <tr>
+          <td>Dimension </td><td> 895(L) x 565(W) x 730(H) mm</td>
+		  </tr>
+          <tr>
+          <td>Net Weight </td><td> 100Kgs</td>
+	      </tr>
+          <tr>
+          <td>Gross Weight </td><td> 120Kgs</td>
+	      </tr>
+          <tr>
+          <td>Sealing Method </td><td> Heat Sealing</td>
+          </tr>
+          </table>
           <div class="fea">
           FEATURES
           </div>
@@ -194,35 +286,59 @@ motor life, strapping speed and reduces overall machine noise.</li>
           <li>Top safety concern: Safe 24vdc electrical control eliminates possibilities of electrical shock.</li>
           </ul>
           </div>
+         
+          
+          
+          </div>
           <br>
           <div class="">
           <div class="headline">
-          Semi Auto Strapping (Floor Model)
+          <a href="" name="codeword4">Semi Auto Strapping (Floor Model)</a>
           </div>
         <div class="image"><img src="machine_img/semiautofloormodel.jpg"  />
 		</div>
-          <div class="fea">
+          
+         <div class="fea">
          MODEL: VI 1083
           </div>
           <br>
           <div>
-          <ul>
-          <li>Power Supply : AC 220V, (50/60Hz)</li>
-		  <li>Driving Motor : 1/4Hp, 220v, 200W</li>
-          <li>Strap Width : 6-15 mm (adjustable)</li>
-		  <li>Tension Strength : 15-50 Kgs</li>
-		  <li>Max. Package Size : Any Size</li>
-		  <li>Min. Package Size : 60 mm</li>
-		  <li>Strapping Speed : 1.5 sec/strap</li>
-		  <li>Dimension : 910(L) x 580(W) x 370(H) mm</li>
-		  <li>Net Weight : 100Kgs</li>
-	      <li>Gross Weight : 120Kgs</li>
-	      <li>Sealing Method : Heat Sealing</li>
-          </ul>
-          </div>
-         
-          
-          <div class="fea">
+          <table class="model">
+          <tr>
+          <td>Power Supply </td><td> AC 220V, (50/60Hz)</td>
+		  </tr>
+          <tr>
+          <td>Driving Motor </td><td> 1/4Hp, 220v, 200W</td>
+          </tr>
+          <tr>
+          <td>Strap Width </td><td> 6-15 mm (adjustable)</td>
+		  </tr>
+          <tr>
+          <td>Tension Strength </td><td> 15-50 Kgs</td>
+		  </tr>
+          <tr>
+          <td>Max. Package Size </td><td> Any Size</td>
+		  </tr>
+          <tr>
+          <td>Min. Package Size </td><td> 60 mm</td>
+		  </tr>
+          <tr>
+          <td>Strapping Speed </td><td> 1.5 sec/strap</td>
+		  </tr>
+          <tr>
+          <td>Dimension </td><td> 910(L) x 580(W) x 370(H) mm</td>
+		  </tr>
+          <tr>
+          <td>Net Weight </td><td> 100Kgs</td>
+	      </tr>
+          <tr>
+          <td>Gross Weight </td><td> 120Kgs</td>
+	      </tr>
+          <tr>
+          <td>Sealing Method </td><td> Heat Sealing</td>
+          </tr>
+          </table>
+           <div class="fea">
           FEATURES
           </div>
           <br>
@@ -241,9 +357,12 @@ motor life, strapping speed and reduces overall machine noise.</li>
          
           </ul>
           </div>
+         
+          
+          </div>
           <div class="">
           <div class="headline">
-          Pallet Strapping
+          <a href="" name="codeword5">Pallet Strapping</a>
           </div>
           <div class="image"><img src="machine_img/Pallet_strapping_machine.jpg"/>
 		</div>
@@ -252,18 +371,37 @@ motor life, strapping speed and reduces overall machine noise.</li>
           </div>
           <br>
           <div>
-          <ul>
-          <li>Power Supply : AC 220V(50/60Hz)</li>
-		  <li>Power : 0.66 KW</li>
-          <li>Strap Width : 6-15 mm (adjustable)</li>
-		  <li>Strapping Speed : 1.5 Sec/Strap</li>
-		  <li>Max. Package Size : Any size</li>
-		  <li>Min. Package Size : 60 mm</li>
-		  <li>Tension Strength (Max.): 15-50 Kgs</li>
-		  <li>Dimension : 945(L)x690(W)x1140(H) mm</li>
-		  <li>Net Weight : 100Kgs</li>
-	      <li>Gross Weight : 120Kgs</li>
-	      </ul>
+          <table class="model">
+          <td>Power Supply </td><td> AC 220V(50/60Hz)</td>
+          </tr>
+          <tr>
+          <td>Power </td><td> 0.66 KW</td>
+          </tr>
+          <tr>
+          <td>Strap Width </td><td> 6-15 mm (adjustable)</td>
+          </tr>
+          <tr>
+		  <td>Strapping Speed </td><td> 1.5 Sec/Strap</td>
+          </tr>
+          <tr>
+		  <td>Max. Package Size </td><td> Any size</td>
+          </tr>
+          <tr>
+		  <td>Min. Package Size </td><td> 60 mm</td>
+          </tr>
+          <tr>
+		  <td>Tension Strength (Max.)</td><td> 15-50 Kgs</td>
+          </tr>
+          <tr>
+		  <td>Dimension </td><td> 945(L)x690(W)x1140(H) mm</td>
+          </tr>
+          <tr>
+		  <td>Net Weight </td><td> 100Kgs</td>
+          </tr>
+          <tr>
+	      <td>Gross Weight </td><td> 120Kgs</td>
+          </tr>
+	      </table>
           </div>
          
           
@@ -310,7 +448,8 @@ motor life, strapping speed and reduces overall machine noise.</li>
         </article>
         
         <article class="grid_3">
-          <h5>Adress</h5>
+          <h5>Address</h5>
+            Regd. Office<br>
               No.7,'D' Block,<br>
               Pooja Residency,<br>Anand Nagar,Upnagar<br>
               Nashik 422 006.<br>
@@ -348,5 +487,18 @@ motor life, strapping speed and reduces overall machine noise.</li>
   </div>
 </footer>
 <script type="text/javascript">Cufon.now();</script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/jquery.accordion.2.0.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $('#example1, #example3').accordion();
+            $('#example2').accordion({
+                canToggle: true
+            });
+            $('#example4').accordion({
+                canToggle: true,
+                canOpenMultiple: true
+            });
+            $(".loading").removeClass("loading");
+        </script>
 </body>
 </html>
