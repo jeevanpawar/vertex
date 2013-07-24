@@ -9,6 +9,10 @@ mark, rp, rt, ruby, summary, time {
 html {
 	width:100%;
 }
+.client
+{
+	margin-left:30px;
+}
 
 body {
 	font-family:Arial, Helvetica, sans-serif;
@@ -364,7 +368,7 @@ h1 {
 /*********************************content*************************************/
 #content {
 	width:100%;
-	padding:25px 0 44px;
+	padding:25px 0 15px;
 	background-image:url(../images/back.png);
 	position:relative;
 	z-index:1;
@@ -1164,3 +1168,18 @@ footer {
 .show_hide {
     display:none;
 }
+.foot_slider{
+	border:1px solid #000;
+	margin-left:30px;
+	background-color:#f3f3f3;
+	border-radius:5px;
+	border:1px #ccc solid;
+	box-shadow: 0px 5px 5px rgba(0,0,0,.35);
+	width:940px;
+	}
+.foot_slider img{
+		border-color:#000;
+		border-style:solid;
+		height:70px;
+		width:70px;
+		}
