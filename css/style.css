@@ -544,7 +544,7 @@ h6 {
 }
 .new
 {
-	width:700px;
+	width:740px;
 	border:5px solid #f3f3f3;
 }
 .new tr td
@@ -1094,6 +1094,23 @@ footer {
 	padding:10px;
 	height:200px;
 }
+.image2
+{
+	margin-left:500px;
+	position:absolute;
+	margin-top:350px;
+	border:10px solid #f3f3f3;
+	box-shadow:0px 0px 1px 0px;
+	
+
+}
+
+.image2 img
+{
+	width:200px;
+	padding:10px;
+	height:200px;
+}
 .fea
 {
 	font-size:20px; 
@@ -1155,6 +1172,7 @@ footer {
 {
 	width:450px;
 	margin-top:1px;
+	text-align:justify;
 	
 }
 .slidingDiv {
