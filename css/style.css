@@ -5,6 +5,10 @@ article, aside, audio, canvas, command, datalist, details, embed, figcaption, fi
 mark, rp, rt, ruby, summary, time {
 	display:inline;
 }
+.cat
+{
+	padding-top:20px;
+}
 /* Global properties ======================================================== */
 html {
 	width:100%;
